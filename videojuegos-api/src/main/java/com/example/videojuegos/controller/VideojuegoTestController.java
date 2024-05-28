@@ -1,22 +1,29 @@
 package com.example.videojuegos.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.videojuegos.service.VideojuegoService;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/games")
 public class VideojuegoTestController {
 
     private VideojuegoService videojuegoService;
+
     public VideojuegoTestController(VideojuegoService videojuegoService){
         this.videojuegoService = videojuegoService;
     }
 
-    @GetMapping("/buscarVideojuegos")
-    public String buscarVideojuegos() {
-        // Modifica estos parámetros según necesites para probar diferentes respuestas
-        return videojuegoService.buscarVideojuegos("18", "4", "2020-01-01,2020-12-31");
+    @GetMapping("/search")
+    public String buscarVideojuegos(@RequestParam Optional<String> plataforma,
+                                    @RequestParam Optional<String> genero,
+                                    @RequestParam Optional<String> fechaLanzamiento,
+                                    @RequestParam Optional<Integer> page,
+                                    @RequestParam Optional<Integer> pageSize) {
+        return videojuegoService.buscarVideojuegos(plataforma, genero, fechaLanzamiento, page, pageSize);
     }
 }
+

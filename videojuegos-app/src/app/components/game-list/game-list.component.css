@@ -1,0 +1,46 @@
+/* game-list.component.css */
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: #202020; /* Fondo oscuro */
+  }
+  
+  .game-card {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .game-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+  }
+  
+  .game-info {
+    padding: 10px;
+    color: #fff; /* Texto blanco para contraste */
+  }
+  
+  .game-info h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  
+  .rating span {
+    background: #666;
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
+  

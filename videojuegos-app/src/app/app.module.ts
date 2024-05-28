@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';  // Asegúrate de importar RouterModule y Routes
 import { AppComponent } from './app.component';
+import { GameListComponent } from './components/game-list/game-list.component';
+
+// Define algunas rutas básicas
+const routes: Routes = [
+  { path: 'games', component: GameListComponent },
+  { path: '', redirectTo: '/games', pathMatch: 'full' }  // Redirecciona la ruta raíz a '/games'
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GameListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)  // Agrega RouterModule a tus importaciones
   ],
   providers: [],
   bootstrap: [AppComponent]
