@@ -7,22 +7,31 @@ import { GameService } from '../../services/game.service';
   styleUrls: ['./game-list.component.css']
 })
 // Dentro de game-list.component.ts
-export class GameListComponent implements OnInit {
+export class GameListComponent {
   games: any[] = [];
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
     this.loadRandomGames();
-  }
+   }
 
   loadRandomGames() {
-    this.gameService.getGames(undefined, undefined, true).subscribe(data => {
+    this.gameService.getGames(undefined, undefined).subscribe(data => {
       this.games = data.results;
     }, error => {
       console.error('Error fetching games:', error);
     });
   }
+
+  loadGames(genreId: string) {
+    this.gameService.getGames(undefined, undefined, genreId).subscribe(data => {
+      this.games = data.results;
+    }, error => {
+      console.error('Error fetching games:', error);
+    });
+  }
+  
 
   filterGames(plataforma: string | undefined, fechaLanzamiento: string | undefined) {
     this.gameService.getGames(plataforma, fechaLanzamiento).subscribe(data => {

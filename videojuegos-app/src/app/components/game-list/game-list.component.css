@@ -1,50 +1,69 @@
-/* game-list.component.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Kanit', sans-serif; /* Asegurando que la fuente se aplique globalmente */
+}
+
+.sidebar {
+  position: fixed; /* Haciendo que la barra lateral sea fija */
+  left: 0; /* Alineación a la izquierda */
+  top: 0;
+  width: 200px; /* Ancho fijo */
+  height: 100vh; /* Altura completa de la ventana */
+  background: #202020;
+  padding: 10px;
+  border-right: 1px solid #333;
+  box-sizing: border-box; /* Asegurando que el padding no afecte el ancho total */
+}
+
+.genre-buttons button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer; /* Añadir cursor de puntero para mejorar la accesibilidad */
+}
+
 .game-container {
+  margin-left: 200px; /* Desplazar el contenedor de juegos a la derecha para evitar la sidebar */
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  background: #202020; /* Asegurando un fondo oscuro para mejor contraste */
+  gap: 10px;
+  background: #202020;
+  min-height: 100vh;
 }
 
 .game-card {
-  font-family: 'Kanit', sans-serif; /* Usando la fuente Kanit */
-  color: #fff; /* Texto en blanco para contraste */
-  background: #333; /* Fondo oscuro para cada tarjeta */
+  background: #333;
+  color: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
-  transition: transform 0.3s; /* Transición suave para hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
 }
 
 .game-card:hover {
-  transform: translateY(-5px); /* Efecto elevación al pasar el ratón */
+  transform: translateY(-5px);
 }
 
 .game-card img {
   width: 100%;
   height: 200px;
-  object-fit: cover; /* Asegura que la imagen cubra bien el espacio */
+  object-fit: cover;
 }
 
 .game-info {
   padding: 10px;
 }
 
-.game-info h3 {
-  margin: 0 0 10px 0; /* Ajuste de margen para el título */
-  font-size: 20px; /* Tamaño de fuente para el título */
-}
-
 .rating {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 16px; /* Ajuste del tamaño de fuente para la clasificación */
-}
-
-.rating span {
-  background: #666; /* Fondo para los números de rating */
+  background: #666;
   padding: 5px;
-  border-radius: 5px; /* Bordes redondeados para las etiquetas de rating */
+  border-radius: 5px;
 }

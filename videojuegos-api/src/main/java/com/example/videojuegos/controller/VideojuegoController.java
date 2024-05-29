@@ -9,21 +9,21 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/games")
-public class VideojuegoTestController {
+public class VideojuegoController {
 
     private VideojuegoService videojuegoService;
 
-    public VideojuegoTestController(VideojuegoService videojuegoService){
+    public VideojuegoController(VideojuegoService videojuegoService){
         this.videojuegoService = videojuegoService;
     }
 
     @GetMapping("/search")
     public String buscarVideojuegos(@RequestParam Optional<String> plataforma,
                                     @RequestParam Optional<String> fechaLanzamiento,
-                                    @RequestParam Optional<Boolean> random,
                                     @RequestParam Optional<Integer> page,
-                                    @RequestParam Optional<Integer> pageSize) {
-        return videojuegoService.buscarVideojuegos(plataforma, fechaLanzamiento, page, pageSize, random);
+                                    @RequestParam Optional<Integer> pageSize,
+                                    @RequestParam Optional<Integer> genero) {
+        return videojuegoService.buscarVideojuegos(plataforma, fechaLanzamiento, page, pageSize, genero);
     }
 }
 
