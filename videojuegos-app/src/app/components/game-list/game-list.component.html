@@ -1,14 +1,29 @@
-<!-- game-list.component.html -->
+<div>
+  <select (change)="onChange($event, 'plataforma')">
+    <option value="">Todos los plataformas</option>
+    <option value="4">PC</option>
+    <option value="187">PlayStation 5</option>
+    <option value="1">Xbox One</option>
+    <option value="186">Xbox Series S/X</option>
+    <option value="6810">PlayStation 4</option>
+    <option value="7">Nintendo Switch</option>
+  </select>
+  <select (change)="onChange($event, 'fecha')">
+    <option value="">Todas las fechas</option>
+    <option value="-released">Más recientes primero</option>
+    <option value="released">Más antiguos primero</option>
+  </select>
+  <button (click)="loadRandomGames()">Cargar juegos aleatorios</button>
+</div>
 <div class="game-container">
-    <div *ngFor="let game of games" class="game-card">
-      <img [src]="game.background_image" alt="game image">
-      <div class="game-info">
-        <h3>{{ game.name }}</h3>
-        <p>{{ game.released }}</p>
-        <div class="rating">
-          <span>{{ game.rating }}</span> / <span>{{ game.rating_top }}</span>
-        </div>
+  <div *ngFor="let game of games" class="game-card">
+    <img [src]="game.background_image" alt="game image">
+    <div class="game-info">
+      <h3>{{ game.name }}</h3>
+      <p>{{ game.released }}</p>
+      <div class="rating">
+        <span>{{ game.rating }}</span> / <span>{{ game.rating_top }}</span>
       </div>
     </div>
   </div>
-  
+</div>

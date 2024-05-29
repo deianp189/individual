@@ -19,11 +19,12 @@ public class VideojuegoTestController {
 
     @GetMapping("/search")
     public String buscarVideojuegos(@RequestParam Optional<String> plataforma,
-                                    @RequestParam Optional<String> genero,
                                     @RequestParam Optional<String> fechaLanzamiento,
+                                    @RequestParam Optional<Boolean> random,
                                     @RequestParam Optional<Integer> page,
                                     @RequestParam Optional<Integer> pageSize) {
-        return videojuegoService.buscarVideojuegos(plataforma, genero, fechaLanzamiento, page, pageSize);
+        return videojuegoService.buscarVideojuegos(plataforma, fechaLanzamiento, page, pageSize, random);
     }
 }
+
 

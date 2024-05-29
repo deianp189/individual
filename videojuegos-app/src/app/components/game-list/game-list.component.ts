@@ -1,4 +1,3 @@
-// src/app/components/game-list/game-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 
@@ -7,17 +6,40 @@ import { GameService } from '../../services/game.service';
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.css']
 })
+// Dentro de game-list.component.ts
 export class GameListComponent implements OnInit {
-  games: any[] = [];  // Asegúrate de que games está diseñado para ser un array.
+  games: any[] = [];
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.getGames().subscribe(data => {
-      this.games = data.results;  // Ahora apunta a results que es el array real de juegos.
-      console.log(this.games);  // Puedes añadir esto para verificar la estructura en la consola.
+    this.loadRandomGames();
+  }
+
+  loadRandomGames() {
+    this.gameService.getGames(undefined, undefined, true).subscribe(data => {
+      this.games = data.results;
     }, error => {
       console.error('Error fetching games:', error);
     });
   }
+
+  filterGames(plataforma: string | undefined, fechaLanzamiento: string | undefined) {
+    this.gameService.getGames(plataforma, fechaLanzamiento).subscribe(data => {
+      this.games = data.results;
+    }, error => {
+      console.error('Error fetching games:', error);
+    });
+  }
+
+  onChange(event: Event, tipo: string) {
+    const selectElement = event.target as HTMLSelectElement;
+    const valor = selectElement.value;
+    if (tipo === 'plataforma') {
+      this.filterGames(valor, undefined);
+    } else {
+      this.filterGames(undefined, valor);
+    }
+  }
 }
+

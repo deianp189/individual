@@ -1,3 +1,4 @@
+// VideojuegoService.java
 package com.example.videojuegos.service;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -5,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class VideojuegoService {
@@ -20,16 +22,23 @@ public class VideojuegoService {
         this.apiKey = apiKey;
     }
 
-    public String buscarVideojuegos(Optional<String> plataforma, Optional<String> genero, Optional<String> fechaLanzamiento,
-                                    Optional<Integer> page, Optional<Integer> pageSize) {
+    public String buscarVideojuegos(Optional<String> plataforma, Optional<String> fechaLanzamiento,
+                                    Optional<Integer> page, Optional<Integer> pageSize, Optional<Boolean> random) {
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(apiBaseUrl + "/games")
-                .queryParam("key", apiKey)
-                .queryParam("platforms", plataforma.orElse(null))
-                .queryParam("genres", genero.orElse(null))
-                .queryParam("dates", fechaLanzamiento.orElse(null))
-                .queryParam("page", page.orElse(null))
-                .queryParam("page_size", pageSize.orElse(null));
+                .queryParam("key", apiKey);
 
-        return restTemplate.getForObject(uriBuilder.toUriString(), String.class);
+        plataforma.ifPresent(p -> uriBuilder.queryParam("platforms", p));
+        fechaLanzamiento.ifPresent(f -> uriBuilder.queryParam("ordering", f));
+        if (random.isPresent() && random.get()) {
+            int randomPage = new Random().nextInt(100) + 1; // Asume que hay 100 páginas, ajustar según necesario
+            uriBuilder.queryParam("page", randomPage);
+        } else {
+            page.ifPresent(p -> uriBuilder.queryParam("page", p));
+        }
+        pageSize.ifPresent(ps -> uriBuilder.queryParam("page_size", ps));
+
+        String url = uriBuilder.toUriString();
+        System.out.println("Request URL: " + url);  // Imprime la URL en la consola
+        return restTemplate.getForObject(url, String.class);
     }
 }
