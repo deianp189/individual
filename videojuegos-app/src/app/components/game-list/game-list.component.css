@@ -1,46 +1,50 @@
 /* game-list.component.css */
 .game-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    background: #202020; /* Fondo oscuro */
-  }
-  
-  .game-card {
-    display: flex;
-    flex-direction: column;
-    background: #333;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .game-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
-  }
-  
-  .game-info {
-    padding: 10px;
-    color: #fff; /* Texto blanco para contraste */
-  }
-  
-  .game-info h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .rating {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-  }
-  
-  .rating span {
-    background: #666;
-    padding: 2px 5px;
-    border-radius: 5px;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background: #202020; /* Asegurando un fondo oscuro para mejor contraste */
+}
+
+.game-card {
+  font-family: 'Kanit', sans-serif; /* Usando la fuente Kanit */
+  color: #fff; /* Texto en blanco para contraste */
+  background: #333; /* Fondo oscuro para cada tarjeta */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
+  transition: transform 0.3s; /* Transición suave para hover */
+}
+
+.game-card:hover {
+  transform: translateY(-5px); /* Efecto elevación al pasar el ratón */
+}
+
+.game-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Asegura que la imagen cubra bien el espacio */
+}
+
+.game-info {
+  padding: 10px;
+}
+
+.game-info h3 {
+  margin: 0 0 10px 0; /* Ajuste de margen para el título */
+  font-size: 20px; /* Tamaño de fuente para el título */
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px; /* Ajuste del tamaño de fuente para la clasificación */
+}
+
+.rating span {
+  background: #666; /* Fondo para los números de rating */
+  padding: 5px;
+  border-radius: 5px; /* Bordes redondeados para las etiquetas de rating */
+}
