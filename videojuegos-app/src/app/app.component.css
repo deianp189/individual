@@ -1,0 +1,50 @@
+/* Ajustes en app.component.css o el CSS global si es compartido */
+
+.navbar {
+    width: 100%;
+    height: 60px; /* Altura fija para la barra de navegación */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que la navbar esté sobre otros elementos */
+    background-color: #333; /* Color de fondo */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Aumenta el padding horizontal para separar los elementos de los bordes */
+  }
+  
+  /* Asegúrate de que el contenido principal no se solape con la navbar */
+  .content {
+    margin-top: 60px; /* Margen superior igual a la altura de la navbar */
+  }
+  
+  .logo img {
+    height: 50px;
+    margin-right: 20px; /* Añade margen derecho al logo para separarlo de los botones */
+    margin-left: 50px;
+    margin-top: 5px;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los botones */
+    justify-content: center; /* Centra los botones en su contenedor */
+    margin-right: 50px;
+  }
+  
+  .nav-buttons button {
+    padding: 10px 20px;
+    margin-left: 10px; /* Controla el espacio entre los botones */
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Reddit Mono", monospace;
+  }
+  
+  .nav-buttons button:hover {
+    background-color: #666;
+  }
+  

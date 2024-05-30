@@ -1,2 +1,14 @@
-
-<router-outlet></router-outlet>
+<!-- app.component.html -->
+<nav class="navbar">
+    <div class="logo">
+      <a href="/">
+        <img src="assets/logo.png" alt="Logo" style="width: 50px;">
+      </a>
+    </div>
+    <div class="nav-buttons">
+      <button routerLink="/login">Iniciar Sesión</button>
+      <button routerLink="/register">Registrarse</button>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>  
