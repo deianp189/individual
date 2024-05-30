@@ -93,4 +93,8 @@ html, body {
   background: #666;
   padding: 5px;
   border-radius: 5px;
+  color: #fff; /* Texto blanco */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 10px; /* Espacio desde el top dentro de la tarjeta */
+  left: 10px; /* Espacio desde la izquierda dentro de la tarjeta */
 }

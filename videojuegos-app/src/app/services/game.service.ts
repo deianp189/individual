@@ -10,9 +10,10 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  getGames(plataforma?: string, fechaLanzamiento?: string, genero?: string): Observable<any> {
+  getGames(plataforma?: string, page?: string, fechaLanzamiento?: string, genero?: string): Observable<any> {
     let params = new HttpParams();
     if (plataforma) params = params.set('plataforma', plataforma);
+    if (page) params = params.set('page', page);
     if (fechaLanzamiento) params = params.set('fechaLanzamiento', fechaLanzamiento);
     if (genero) params = params.set('genero', genero);
 

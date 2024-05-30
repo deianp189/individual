@@ -28,6 +28,7 @@ public class VideojuegoService {
 
         plataforma.ifPresent(p -> uriBuilder.queryParam("platforms", p));
         fechaLanzamiento.ifPresent(f -> uriBuilder.queryParam("ordering", f));
+        page.ifPresent(p -> uriBuilder.queryParam("page", p));        
         pageSize.ifPresent(ps -> uriBuilder.queryParam("page_size", ps));
         genero.ifPresent(ps -> uriBuilder.queryParam("genres", genero));
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core'; // Asegúrate de incluir HostListener aquí
 import { GameService } from '../../services/game.service';
 
 @Component({
@@ -6,17 +6,17 @@ import { GameService } from '../../services/game.service';
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.css']
 })
-// Dentro de game-list.component.ts
-export class GameListComponent {
+export class GameListComponent implements OnInit {
   games: any[] = [];
+  private currentPage = 2;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.loadRandomGames();
-   }
+    this.loadGames();
+  }
 
-  loadRandomGames() {
+  loadGames() {
     this.gameService.getGames(undefined, undefined).subscribe(data => {
       this.games = data.results;
     }, error => {
@@ -24,31 +24,28 @@ export class GameListComponent {
     });
   }
 
-  loadGames(genreId: string) {
-    this.gameService.getGames(undefined, undefined, genreId).subscribe(data => {
-      this.games = data.results;
-    }, error => {
-      console.error('Error fetching games:', error);
-    });
-  }
-  
-
-  filterGames(plataforma: string | undefined, fechaLanzamiento: string | undefined) {
-    this.gameService.getGames(plataforma, fechaLanzamiento).subscribe(data => {
-      this.games = data.results;
+  loadMoreGames() {
+    this.gameService.getGames(undefined, this.currentPage.toString(), undefined, undefined).subscribe(data => {
+      this.games = this.games.concat(data.results);  // Asegúrate de concatenar los resultados para agregar, no reemplazar
+      this.currentPage++;  // Incrementa el número de página después de cargar más juegos
     }, error => {
       console.error('Error fetching games:', error);
     });
   }
 
-  onChange(event: Event, tipo: string) {
-    const selectElement = event.target as HTMLSelectElement;
-    const valor = selectElement.value;
-    if (tipo === 'plataforma') {
-      this.filterGames(valor, undefined);
-    } else {
-      this.filterGames(undefined, valor);
+  loadGamesByGenre(genreId: string) {
+    this.gameService.getGames(undefined, undefined, undefined, genreId).subscribe(data => {
+      this.games = data.results;
+    }, error => {
+      console.error('Error fetching games:', error);
+    });
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    // Verifica si el usuario ha llegado al final de la página
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+      this.loadMoreGames();  // Corrige esto para llamar a loadMoreGames
     }
   }
 }
-

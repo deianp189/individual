@@ -1,0 +1,70 @@
+/* Register component styles */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/assets/background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Reddit Mono", monospace;
+}
+
+.register-form {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #ffffff;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-form h2 {
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group input {
+  width: calc(100% - 20px);
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+}
+
+button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-family: "Reddit Mono", monospace;
+}
+
+button:hover {
+  background-color: #f1f1f1;
+}
+
+.login-link {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #ffffff;
+  text-decoration: underline;
+}

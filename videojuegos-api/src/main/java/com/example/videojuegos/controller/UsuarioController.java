@@ -27,7 +27,4 @@ public class UsuarioController {
     public Usuario getUsuarioById(@PathVariable Long id) {
         return usuarioRepository.findById(id).orElse(null);
     }
-
-    // Implementar métodos adicionales según sea necesario
 }
-
