@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="register-container">
+    <div class="register-form">
+      <h2>Inicia Sesión</h2>
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div class="form-group">
+          <input type="text" placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" required #usernameField="ngModel">
+          <div *ngIf="usernameField.errors?.['required'] && usernameField.touched" class="error">
+            El nombre de usuario es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required #passwordField="ngModel">
+          <div *ngIf="passwordField.errors?.['required'] && passwordField.touched" class="error">
+            La contraseña es requerida.
+          </div>
+        </div>
+        <button type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+      </form>
+      <p class="login-link">¿No tienes cuenta? <a href="/register">Regístrate</a></p>
+    </div>
+  </div>
+  
