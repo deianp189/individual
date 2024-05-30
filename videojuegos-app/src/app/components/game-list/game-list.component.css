@@ -3,22 +3,22 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Kanit', sans-serif; /* Asegurando que la fuente se aplique globalmente */
 }
 
 .sidebar {
-  position: fixed; /* Haciendo que la barra lateral sea fija */
-  left: 0; /* Alineación a la izquierda */
+  position: fixed;
+  left: 0;
   top: 0;
-  width: 200px; /* Ancho fijo */
-  height: 100vh; /* Altura completa de la ventana */
-  background: #202020;
+  width: 220px;
+  height: 100vh;
+  background: #1a1a1a;
   padding: 10px;
-  border-right: 1px solid #333;
-  box-sizing: border-box; /* Asegurando que el padding no afecte el ancho total */
+  box-sizing: border-box;
 }
 
 .genre-buttons button {
+  display: flex; /* Ajuste para alinear íconos y texto */
+  align-items: center; /* Centra el contenido verticalmente */
   background: #333;
   color: #fff;
   border: none;
@@ -26,11 +26,35 @@ html, body {
   margin-bottom: 10px;
   width: 100%;
   text-align: left;
-  cursor: pointer; /* Añadir cursor de puntero para mejorar la accesibilidad */
+  cursor: pointer;
+  border-radius: 20px; /* Bordes redondeados */
+  font-family: "Reddit Mono", monospace;
+  transition: background-color 0.1s ease;
+}
+
+.genre-buttons button:hover {
+  background-color: #444;
+}
+
+.genre-buttons button img {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.genre-buttons button i.icon-placeholder {
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+  /* Estilos temporales para el ícono, reemplazar con el ícono específico más tarde */
+  width: 16px;
+  height: 16px;
+  background: #fff; /* Color de ejemplo para visualizar el espacio del ícono */
+  display: inline-block;
+  border-radius: 50%; /* Ícono redondeado */
 }
 
 .game-container {
-  margin-left: 200px; /* Desplazar el contenedor de juegos a la derecha para evitar la sidebar */
+  margin-left: 210px;
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -46,6 +70,7 @@ html, body {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   transition: transform 0.3s;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .game-card:hover {

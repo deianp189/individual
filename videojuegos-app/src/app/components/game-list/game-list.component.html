@@ -1,21 +1,22 @@
 <div class="sidebar">
   <div class="genre-buttons">
-    <button (click)="loadGames('4')">Acción</button>
-    <button (click)="loadGames('51')">Indie</button>
-    <button (click)="loadGames('3')">Aventura</button>
-    <button (click)="loadGames('5')">RPG</button>
-    <button (click)="loadGames('10')">Estrategia</button>
-    <button (click)="loadGames('2')">Shooter</button>
-    <button (click)="loadGames('40')">Casual</button>
-    <button (click)="loadGames('7')">Puzzle</button>
-    <button (click)="loadGames('11')">Arcade</button>
-    <button (click)="loadGames('83')">Plataformeo</button>
-    <button (click)="loadGames('1')">Carreras</button>
-    <button (click)="loadGames('59')">Multijugador</button>
-    <button (click)="loadGames('15')">Deporte</button>
-    <button (click)="loadGames('6')">Peleas</button>
+    <button (click)="loadGames('4')"><img src="../assets/logo-accion.png" alt="Icon">Acción</button>
+    <button (click)="loadGames('51')"><img src="../assets/logo-indie.png" alt="Icon">Indie</button>
+    <button (click)="loadGames('3')"><img src="../assets/aventura-logo.png" alt="Icon">Aventura</button>
+    <button (click)="loadGames('5')"><img src="../assets/rpg-logo.png" alt="Icon">RPG</button>
+    <button (click)="loadGames('10')"><img src="../assets/estrategia-logo.png" alt="Icon">Estrategia</button>
+    <button (click)="loadGames('2')"><img src="../assets/shooter-logo.png" alt="Icon">Shooter</button>
+    <button (click)="loadGames('40')"><img src="../assets/casual-logo.png" alt="Icon">Casual</button>
+    <button (click)="loadGames('7')"><img src="../assets/logo-puzzle.png" alt="Icon">Puzzle</button>
+    <button (click)="loadGames('11')"><img src="../assets/arcade-logo.png" alt="Icon">Arcade</button>
+    <button (click)="loadGames('83')"><img src="../assets/plataformeo-logo.png" alt="Icon">Plataformeo</button>
+    <button (click)="loadGames('1')"><img src="../assets/carreras-logo.png" alt="Icon">Carreras</button>
+    <button (click)="loadGames('59')"><img src="../assets/multijugador-logo.png" alt="Icon">Multijugador</button>
+    <button (click)="loadGames('15')"><img src="../assets/deporte-logo.png" alt="Icon">Deporte</button>
+    <button (click)="loadGames('6')"><img src="../assets/fight-logo.png" alt="Icon">Peleas</button>
   </div>
 </div>
+
 
 <div class="game-container">
   <div *ngFor="let game of games" class="game-card">
