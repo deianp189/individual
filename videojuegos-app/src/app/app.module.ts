@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { GameListComponent } from './components/game-list/game-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { VideojuegoDetalleComponent } from './videojuego-detalle/videojuego-detalle.component';
 
 // Define algunas rutas básicas
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'games', component: GameListComponent },
-  { path: '', redirectTo: '/games', pathMatch: 'full' }  // Redirecciona la ruta raíz a '/games'
+  { path: '', redirectTo: '/games', pathMatch: 'full' }, // Redirecciona la ruta raíz a '/games'
+  { path: 'game/:id', component: VideojuegoDetalleComponent }
 ];
 
 @NgModule({
@@ -21,7 +23,8 @@ const routes: Routes = [
     AppComponent,
     GameListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VideojuegoDetalleComponent
   ],
   exports: [RouterModule],
   imports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core'; // Asegúrate de incluir HostListener aquí
 import { GameService } from '../../services/game.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-list',
@@ -10,42 +11,40 @@ export class GameListComponent implements OnInit {
   games: any[] = [];
   private currentPage = 2;
 
-  constructor(private gameService: GameService) { }
+  // Inyecta Router en el constructor
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
     this.loadGames();
   }
 
   loadGames() {
-    this.gameService.getGames(undefined, undefined).subscribe(data => {
+    this.gameService.getGames().subscribe(data => {
       this.games = data.results;
-    }, error => {
-      console.error('Error fetching games:', error);
     });
   }
 
   loadMoreGames() {
-    this.gameService.getGames(undefined, this.currentPage.toString(), undefined, undefined).subscribe(data => {
-      this.games = this.games.concat(data.results);  // Asegúrate de concatenar los resultados para agregar, no reemplazar
-      this.currentPage++;  // Incrementa el número de página después de cargar más juegos
-    }, error => {
-      console.error('Error fetching games:', error);
+    this.gameService.getGames(undefined, this.currentPage.toString()).subscribe(data => {
+      this.games = this.games.concat(data.results);
+      this.currentPage++;
     });
   }
 
   loadGamesByGenre(genreId: string) {
     this.gameService.getGames(undefined, undefined, undefined, genreId).subscribe(data => {
       this.games = data.results;
-    }, error => {
-      console.error('Error fetching games:', error);
     });
+  }
+
+  goToGameDetails(id: number): void {
+    this.router.navigate(['/game', id]);  // Usa el Router para navegar
   }
 
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
-    // Verifica si el usuario ha llegado al final de la página
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
-      this.loadMoreGames();  // Corrige esto para llamar a loadMoreGames
+      this.loadMoreGames();
     }
   }
 }

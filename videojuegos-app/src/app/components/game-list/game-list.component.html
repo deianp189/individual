@@ -17,9 +17,10 @@
   </div>
 </div>
 
+<!-- src/app/components/game-list/game-list.component.html -->
 <div class="game-container">
-  <div *ngFor="let game of games" class="game-card">
-    <img [src]="game.background_image" alt="game image">
+  <div *ngFor="let game of games" class="game-card" (click)="goToGameDetails(game.id)">
+    <img [src]="game.background_image" alt="{{ game.name }} image">
     <div class="game-info">
       <h3>{{ game.name }}</h3>
       <p>{{ game.released }}</p>
@@ -29,3 +30,5 @@
     </div>
   </div>
 </div>
+
+
