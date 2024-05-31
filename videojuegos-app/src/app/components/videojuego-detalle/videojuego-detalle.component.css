@@ -1,0 +1,141 @@
+/* src/app/components/videojuego-detalle/videojuego-detalle.component.css */
+.game-detail-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    margin-top: 120px;
+    color: #fff;
+    background: #222; /* Fondo general del contenedor */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: "Reddit Mono", monospace;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden; /* Importante para manejar cualquier desbordamiento */
+}
+
+.content-background {
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    background: inherit; /* Hereda el fondo configurado a nivel de Angular */
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparencia para facilitar la lectura */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px) brightness(50%);
+    z-index: -1; /* Envía este fondo detrás del contenido textual */
+}
+
+.header {
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #ddd;
+}
+
+.header span {
+    color: #aaa;
+    font-size: 18px;
+}
+
+.header div {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.ratings {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.rating {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.rating-button {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.about-game h2 {
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.about-game p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #bbb;
+}
+
+.game-main-image {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    margin-bottom: 20px; /* Espacio debajo de la imagen */
+}
+
+.game-main-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Bordes redondeados para la imagen */
+}
+
+.game-images {
+    margin-top: 20px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.game-images img {
+    width: 160px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.purchase-options {
+    margin-top: 20px;
+}
+
+.purchase-options h2 {
+    font-size: 20px;
+    color: #ccc;
+}
+
+.purchase-options ul {
+    list-style: none;
+    padding: 0;
+}
+
+.purchase-options li {
+    margin-top: 10px;
+}
+
+.purchase-options a {
+    color: #00BFFF;
+    text-decoration: none;
+    font-size: 16px;
+}

@@ -16,8 +16,8 @@
   
   /* Asegúrate de que el contenido principal no se solape con la navbar */
   .content {
-    margin-top: 60px; /* Margen superior igual a la altura de la navbar */
-  }
+    margin-top: 60px; /* Ajusta según la altura de tu navbar */
+}
   
   .logo img {
     height: 50px;

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { GameListComponent } from './components/game-list/game-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { VideojuegoDetalleComponent } from './videojuego-detalle/videojuego-detalle.component';
+import { VideojuegoDetalleComponent } from './components/videojuego-detalle/videojuego-detalle.component';
 
 // Define algunas rutas básicas
 const routes: Routes = [
