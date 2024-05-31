@@ -34,4 +34,12 @@
     </form>
     <p class="login-link">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
   </div>
+
+  <!-- Ventana modal -->
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>Registro exitoso! Ahora puedes <a href="/login">iniciar sesión</a>.</p>
+    </div>
+  </div>
 </div>

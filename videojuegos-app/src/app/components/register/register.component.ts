@@ -18,6 +18,7 @@ export class RegisterComponent {
     username: '',
     password: ''
   };
+  showModal: boolean = false; // Añadimos esta propiedad
 
   constructor(private http: HttpClient) {}
 
@@ -26,12 +27,15 @@ export class RegisterComponent {
     this.http.post(url, this.user).subscribe({
       next: (response) => {
         console.log('Registro exitoso', response);
-        // Aquí pondré el resto del codigo
+        this.showModal = true; // Mostrar la ventana modal
       },
       error: (error) => {
         console.error('Error en el registro', error);
-        // Manejar errores
       }
     });
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 }

@@ -22,6 +22,50 @@
   z-index: 1;
 }
 
+/* Estilos para la ventana modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 3; /* Ajustar el z-index para que aparezca por encima del formulario */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+}
+
+.close {
+  color: #ffffff;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .register-form {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 3rem;
@@ -95,4 +139,18 @@ button:hover {
 .login-link a {
   color: #ffffff;
   text-decoration: underline;
+}
+
+/* Ajustar las clases de la ventana modal */
+.modal p {
+  margin: 0;
+}
+
+.modal a {
+  color: #00ff00;
+  text-decoration: underline;
+}
+
+.modal a:hover {
+  color: #00cc00;
 }
