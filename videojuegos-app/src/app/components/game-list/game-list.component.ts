@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class GameListComponent implements OnInit {
   games: any[] = [];
-  private currentPage = 2;
+  public currentPage = 2;
 
   // Inyecta Router en el constructor
   constructor(private gameService: GameService, private router: Router) { }
@@ -25,9 +25,9 @@ export class GameListComponent implements OnInit {
   }
 
   loadMoreGames() {
-    this.gameService.getGames(undefined, this.currentPage.toString()).subscribe(data => {
+    this.gameService.getGames(undefined, this.currentPage.toString(), undefined, undefined).subscribe(data => {
       this.games = this.games.concat(data.results);
-      this.currentPage++;
+      this.currentPage+2;
     });
   }
 

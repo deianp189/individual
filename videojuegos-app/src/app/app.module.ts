@@ -8,6 +8,7 @@ import { GameListComponent } from './components/game-list/game-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VideojuegoDetalleComponent } from './components/videojuego-detalle/videojuego-detalle.component';
+import { AuthService } from './services/auth.service'; // Servicio de autenticación
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,7 +33,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService], // Añadir AuthService aquí
   bootstrap: [AppComponent]
 })
 export class AppModule { }

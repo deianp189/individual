@@ -58,14 +58,15 @@ public class UsuarioController {
         Optional<Usuario> usuarioExistente = usuarioRepository.findByUsername(usuario.getUsername());
         Map<String, Object> response = new HashMap<>();
         if (usuarioExistente.isPresent() && usuario.getPassword().equals(usuarioExistente.get().getPassword())) {
-         response.put("message", "Inicio de sesión exitoso.");
-         return new ResponseEntity<>(response, HttpStatus.OK);
+            response.put("message", "Inicio de sesión exitoso.");
+            response.put("id", usuarioExistente.get().getId());
+            response.put("username", usuarioExistente.get().getUsername()); // Incluir el nombre de usuario en la respuesta
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
-         response.put("message", "Nombre de usuario o contraseña incorrectos.");
+            response.put("message", "Nombre de usuario o contraseña incorrectos.");
             return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+        }
     }
-}
-
 
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getUsuarioById(@PathVariable Long id) {

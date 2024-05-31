@@ -1,5 +1,5 @@
-// src/app/app.component.ts
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service'; // Servicio de autenticación
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'videojuegos-app';
+  constructor(public authService: AuthService) { }
+
+  logout() {
+    this.authService.logout();
+  }
 }
