@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class AuthService {
   private idKey = 'userId';
   private usernameKey = 'username';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   setId(id: string) {
     localStorage.setItem(this.idKey, id);
@@ -32,5 +33,11 @@ export class AuthService {
   logout() {
     localStorage.removeItem(this.idKey);
     localStorage.removeItem(this.usernameKey);
-  }
+    if (this.router.url === '/games') {
+      window.location.reload();
+    } else {
+      this.router.navigate(['/']);
+    }
+}
+
 }

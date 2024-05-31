@@ -42,6 +42,10 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(Long id) {
+        this.id = id;
+    }
+
     // Constructor with parameters
     public Usuario(String username, String email, String password) {
         this.username = username;

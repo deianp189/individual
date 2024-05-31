@@ -1,0 +1,20 @@
+.profile-container {
+    padding: 20px;
+    font-family: "Reddit Mono", monospace;
+  }
+  
+  .game-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .game-card {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  

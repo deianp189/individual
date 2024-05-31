@@ -8,14 +8,17 @@ import { GameListComponent } from './components/game-list/game-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VideojuegoDetalleComponent } from './components/videojuego-detalle/videojuego-detalle.component';
-import { AuthService } from './services/auth.service'; // Servicio de autenticación
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ToastNotificationComponent } from './components/toast-notification/toast-notification.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'games', component: GameListComponent },
   { path: '', redirectTo: '/games', pathMatch: 'full' },
-  { path: 'game/:id', component: VideojuegoDetalleComponent }
+  { path: 'game/:id', component: VideojuegoDetalleComponent },
+  { path: 'profile', component: UserProfileComponent }
 ];
 
 @NgModule({
@@ -24,7 +27,9 @@ const routes: Routes = [
     GameListComponent,
     LoginComponent,
     RegisterComponent,
-    VideojuegoDetalleComponent
+    VideojuegoDetalleComponent,
+    UserProfileComponent,
+    ToastNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService], // Añadir AuthService aquí
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

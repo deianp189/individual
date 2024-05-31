@@ -1,6 +1,9 @@
-import { Component, OnInit, HostListener } from '@angular/core'; // Asegúrate de incluir HostListener aquí
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { ToastNotificationComponent } from '../toast-notification/toast-notification.component';
 
 @Component({
   selector: 'app-game-list',
@@ -10,11 +13,13 @@ import { Router } from '@angular/router';
 export class GameListComponent implements OnInit {
   games: any[] = [];
   public currentPage = 2;
+  isAuthenticated: boolean = false;
+  @ViewChild(ToastNotificationComponent) toastNotification!: ToastNotificationComponent;
 
-  // Inyecta Router en el constructor
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService, private router: Router, private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
+    this.isAuthenticated = this.authService.isAuthenticated();
     this.loadGames();
   }
 
@@ -27,7 +32,7 @@ export class GameListComponent implements OnInit {
   loadMoreGames() {
     this.gameService.getGames(undefined, this.currentPage.toString(), undefined, undefined).subscribe(data => {
       this.games = this.games.concat(data.results);
-      this.currentPage+2;
+      this.currentPage += 2;
     });
   }
 
@@ -38,7 +43,22 @@ export class GameListComponent implements OnInit {
   }
 
   goToGameDetails(id: number): void {
-    this.router.navigate(['/game', id]);  // Usa el Router para navegar
+    this.router.navigate(['/game', id]);
+  }
+
+  addToFavorites(gameId: string) {
+    const userId = this.authService.getId();
+    const url = 'http://localhost:8080/api/favoritos';
+    const favorito = { usuarioId: userId, juegoId: gameId };
+
+    this.http.post(url, favorito).subscribe({
+      next: (response) => {
+        this.toastNotification.showMessage('Juego agregado a favoritos');
+      },
+      error: (error) => {
+        console.error('Error al agregar a favoritos', error);
+      }
+    });
   }
 
   @HostListener('window:scroll', ['$event'])

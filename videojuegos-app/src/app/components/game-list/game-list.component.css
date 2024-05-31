@@ -66,6 +66,9 @@ html, body {
 }
 
 .game-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #333;
   color: #fff;
   border-radius: 8px;
@@ -87,6 +90,10 @@ html, body {
 
 .game-info {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 .rating {
@@ -97,4 +104,20 @@ html, body {
   position: absolute; /* Posicionamiento absoluto */
   top: 10px; /* Espacio desde el top dentro de la tarjeta */
   left: 10px; /* Espacio desde la izquierda dentro de la tarjeta */
+}
+
+.boton {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Reddit Mono", monospace;
+  align-self: center;
+}
+
+.boton:hover {
+  background-color: #666;
 }

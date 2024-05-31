@@ -18,17 +18,12 @@ public class Favorito {
     @Column(name = "juego_id")
     private String juegoId;
 
-    @Column(name = "fecha_agregado")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAgregado;
-
     public Favorito() {
     }
 
-    public Favorito(Usuario usuario, String juegoId, Date fechaAgregado) {
+    public Favorito(Usuario usuario, String juegoId) {
         this.usuario = usuario;
         this.juegoId = juegoId;
-        this.fechaAgregado = fechaAgregado;
     }
 
     public Long getId() {
@@ -55,14 +50,6 @@ public class Favorito {
         this.juegoId = juegoId;
     }
 
-    public Date getFechaAgregado() {
-        return fechaAgregado;
-    }
-
-    public void setFechaAgregado(Date fechaAgregado) {
-        this.fechaAgregado = fechaAgregado;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,13 +57,12 @@ public class Favorito {
         Favorito favorito = (Favorito) o;
         return Objects.equals(getId(), favorito.getId()) &&
                 Objects.equals(getUsuario(), favorito.getUsuario()) &&
-                Objects.equals(getJuegoId(), favorito.getJuegoId()) &&
-                Objects.equals(getFechaAgregado(), favorito.getFechaAgregado());
+                Objects.equals(getJuegoId(), favorito.getJuegoId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUsuario(), getJuegoId(), getFechaAgregado());
+        return Objects.hash(getId(), getUsuario(), getJuegoId());
     }
 
     @Override
@@ -84,8 +70,7 @@ public class Favorito {
         return "Favorito{" +
                 "id=" + id +
                 ", usuario=" + usuario +
-                ", juegoId='" + juegoId + '\'' +
-                ", fechaAgregado=" + fechaAgregado +
+                ", juegoId='" + juegoId +
                 '}';
     }
 }
