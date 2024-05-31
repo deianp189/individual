@@ -9,6 +9,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     font-family: "Reddit Mono", monospace;
     animation: fadeInOut 3s ease;
+    z-index: 1000;  /* Asegura que esté por encima de todo */
   }
   
   @keyframes fadeInOut {

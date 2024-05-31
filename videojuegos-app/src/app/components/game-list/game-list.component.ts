@@ -56,7 +56,11 @@ export class GameListComponent implements OnInit {
         this.toastNotification.showMessage('Juego agregado a favoritos');
       },
       error: (error) => {
-        console.error('Error al agregar a favoritos', error);
+        if (error.status === 409) {
+          this.toastNotification.showMessage('El videojuego ya está en tus favoritos');
+        } else {
+          console.error('Error al agregar a favoritos', error);
+        }
       }
     });
   }

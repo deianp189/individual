@@ -1,11 +1,20 @@
-<div class="profile-container">
-    <h2>Perfil de {{ username }}</h2>
-    <h3>Juegos Favoritos</h3>
-    <div class="game-cards">
+<div class="profile-background">
+  <div class="profile-container">
+    <div class="user-card">
+      <h2>{{ username }}</h2>
+    </div>
+
+    <div *ngIf="favoritos.length > 0" class="game-container">
+      <h3>Juegos Favoritos</h3>
       <div *ngFor="let favorito of favoritos" class="game-card">
-        <h4>{{ favorito.juegoId }}</h4>
-        <!-- Aquí puedes agregar más información del juego si es necesario -->
+        <img [src]="favorito.background_image" alt="{{ favorito.juegoNombre }} image">
+        <div class="game-info">
+          <h3>{{ favorito.juegoNombre }}</h3>
+          <button class="boton" (click)="goToGameDetails(favorito.juegoId)">Ver Detalles</button>
+          <button class="boton" (click)="removeFromFavorites(favorito.juegoId)">Eliminar de Favoritos</button>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>
+<app-toast-notification></app-toast-notification>
