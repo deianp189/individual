@@ -1,57 +1,60 @@
 <!-- src/app/components/videojuego-detalle/videojuego-detalle.component.html -->
 
-
 <div class="background-image">
-    <img src="../assets/background-details.jpg" alt="holaaa">
+    <img src="../assets/background-details.jpg" alt="background details">
 </div>
-<!-- src/app/components/videojuego-detalle/videojuego-detalle.component.html -->
+
 <div class="game-detail-container" *ngIf="juego">
     <div class="header">
         <h1>{{ juego.name }} <span>#{{ juego.id }}</span></h1>
         <div>{{ juego.released }}</div>
-        <div class="ratings">
-            <div *ngFor="let rating of juego.ratings" class="rating">
-                <span [ngClass]="{
-                  'exceptional': rating.title === 'exceptional',
-                  'recommended': rating.title === 'recommended',
-                  'meh': rating.title === 'meh',
-                  'skip': rating.title === 'skip'
-                }">
-                    {{ rating.title }} ({{ rating.count }})
-                </span>
-                <!-- Botones con emojis -->
-                <span class="rating-button" [ngClass]="{
-                  'exceptional': rating.title === 'exceptional',
-                  'recommended': rating.title === 'recommended',
-                  'meh': rating.title === 'meh',
-                  'skip': rating.title === 'skip'
-                }">
-                    {{ rating.title === 'exceptional' ? '🔥' : 
-                       rating.title === 'recommended' ? '👍' :
-                       rating.title === 'meh' ? '😐' : '👎' }}
-                </span>
+    </div>
+
+    <!-- Sección de plataformas en formato horizontal -->
+    <div class="platforms-container" *ngIf="juego.platforms.length > 0">
+        <h2>Available Platforms</h2>
+        <div class="platforms">
+            <div *ngFor="let platformDetail of juego.platforms" class="platform">
+                {{ platformDetail.platform.name }}
             </div>
         </div>
     </div>
+
+    <div class="ratings">
+        <div *ngFor="let rating of juego.ratings" class="rating">
+            <span [ngClass]="{
+              'exceptional': rating.title === 'exceptional',
+              'recommended': rating.title === 'recommended',
+              'meh': rating.title === 'meh',
+              'skip': rating.title === 'skip'
+            }">
+                {{ rating.title }} ({{ rating.count }})
+            </span>
+            <span class="rating-button" [ngClass]="{
+              'exceptional': rating.title === 'exceptional',
+              'recommended': rating.title === 'recommended',
+              'meh': rating.title === 'meh',
+              'skip': rating.title === 'skip'
+            }">
+                {{ rating.title === 'exceptional' ? '🔥' : 
+                   rating.title === 'recommended' ? '👍' :
+                   rating.title === 'meh' ? '😐' : '👎' }}
+            </span>
+        </div>
+    </div>
+
     <div class="about-game">
         <h2>About</h2>
         <p [innerHTML]="juego.description ?? 'No description available'"></p>
     </div>
+
     <div class="game-main-image">
         <img [src]="juego.background_image" alt="Main game image">
     </div>
+
     <div class="game-images">
-        <h3>Screenshots</h3>
         <div *ngFor="let screenshot of juego.short_screenshots">
             <img [src]="screenshot.image" alt="Game screenshot">
         </div>
-    </div>
-    <div class="purchase-options">
-        <h2>Where to buy</h2>
-        <ul>
-            <li *ngFor="let store of juego.stores">
-                <a [href]="store.url">{{ store.name }}</a>
-            </li>
-        </ul>
     </div>
 </div>

@@ -15,6 +15,32 @@
     overflow: hidden; /* Importante para manejar cualquier desbordamiento */
 }
 
+/* src/app/components/videojuego-detalle/videojuego-detalle.component.css */
+
+.platforms-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.platforms {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.platform {
+    background-color: #333;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.platform:last-child {
+    margin-right: 0;
+}
+
+
 .content-background {
     position: relative;
     padding: 20px;
