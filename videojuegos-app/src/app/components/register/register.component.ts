@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 interface User {
   email: string;
@@ -13,24 +14,31 @@ interface User {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  user: User = {
-    email: '',
-    username: '',
-    password: ''
-  };
-  showModal: boolean = false; // Añadimos esta propiedad
+  registerForm: FormGroup;
+  showModal: boolean = false;
+  registrationError: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
   onSubmit() {
     const url = 'http://localhost:8080/api/usuarios/register';
-    this.http.post(url, this.user).subscribe({
-      next: (response) => {
+    const user: User = this.registerForm.value;
+
+    this.http.post(url, user).subscribe({
+      next: (response: any) => {
         console.log('Registro exitoso', response);
-        this.showModal = true; // Mostrar la ventana modal
+        this.showModal = true;
+        this.registrationError = null;
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Error en el registro', error);
+        this.registrationError = error.error.message;
       }
     });
   }
