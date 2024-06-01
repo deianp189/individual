@@ -5,7 +5,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class VideojuegoService {
@@ -24,6 +32,25 @@ public class VideojuegoService {
     public String obtenerDetalles(String id) {
         String url = apiBaseUrl + "/games/" + id + "?key=" + apiKey;
         return restTemplate.getForObject(url, String.class);
+    }
+
+public List<String> obtenerNoticias() {
+        List<String> noticias = new ArrayList<>();
+        try {
+            Document doc = Jsoup.connect("https://vandal.elespanol.com/noticias/videojuegos").get();
+            Elements elementosNoticias = doc.select(".caja620 a"); // Asumiendo que esta es la selección correcta
+
+            for (int i = 0; i < 3 && i < elementosNoticias.size(); i++) {
+                Element noticia = elementosNoticias.get(i);
+                String titulo = noticia.select(".titulocaja").text();
+                String url = noticia.attr("href");
+                String descripcion = noticia.select(".desccaja").text();
+                noticias.add(titulo + " - " + descripcion + " Más detalles: " + url);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return noticias;
     }
 
     public String buscarVideojuegos(Optional<String> plataforma, Optional<String> fechaLanzamiento,

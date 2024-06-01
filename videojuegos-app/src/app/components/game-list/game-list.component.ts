@@ -15,12 +15,23 @@ export class GameListComponent implements OnInit {
   public currentPage = 2;
   isAuthenticated: boolean = false;
   @ViewChild(ToastNotificationComponent) toastNotification!: ToastNotificationComponent;
+  noticias: string[] = [];
 
   constructor(private gameService: GameService, private router: Router, private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
     this.loadGames();
+    this.cargarNoticias();
+  }
+
+  cargarNoticias() {
+    this.http.get<string[]>('http://localhost:8080/api/games/noticias', { responseType: 'json' })
+      .subscribe(data => {
+        this.noticias = data;
+      }, error => {
+        console.error('Error al cargar noticias', error);
+      });
   }
 
   loadGames() {

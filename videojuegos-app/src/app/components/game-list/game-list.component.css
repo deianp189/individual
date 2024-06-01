@@ -5,6 +5,38 @@ html, body {
   width: 100%;
 }
 
+/* Estilos para la sidebar de noticias (derecha) */
+.news-sidebar {
+  position: fixed;
+  right: 0;
+  top: 50px;
+  width: 220px;
+  height: 100vh;
+  background: #1a1a1a; /* Fondo oscuro de la sidebar */
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Encabezado de noticias */
+.news-content h3 {
+  color: #fff;
+  margin-bottom: 5px; /* Espacio debajo del título */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333; /* Línea horizontal debajo del título */
+}
+
+/* Estilo para la card de la noticia */
+.news-content p {
+  background: #2c2c2c; /* Fondo gris claro para el texto de la noticia */
+  color: #ccc; /* Color del texto */
+  padding: 10px; /* Espacio interior */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-top: 10px; /* Espacio arriba de la noticia */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra suave para resaltar la card */
+}
+
+/* Estilos para los botones de géneros en el lado izquierdo */
 .sidebar {
   position: fixed;
   left: 0;
@@ -14,12 +46,14 @@ html, body {
   background: #1a1a1a;
   padding: 10px;
   box-sizing: border-box;
-  overflow-y: auto; /* Habilita scroll vertical */
+  overflow-y: auto;
 }
 
+
+/* Estilos para los botones de géneros */
 .genre-buttons button {
-  display: flex; /* Ajuste para alinear íconos y texto */
-  align-items: center; /* Centra el contenido verticalmente */
+  display: flex;
+  align-items: center;
   background: #333;
   color: #fff;
   border: none;
@@ -28,7 +62,7 @@ html, body {
   width: 100%;
   text-align: left;
   cursor: pointer;
-  border-radius: 20px; /* Bordes redondeados */
+  border-radius: 20px;
   font-family: "Reddit Mono", monospace;
   transition: background-color 0.1s ease;
 }
@@ -44,23 +78,15 @@ html, body {
   border-radius: 50%;
 }
 
-.genre-buttons button i.icon-placeholder {
-  margin-right: 10px; /* Espacio entre el ícono y el texto */
-  /* Estilos temporales para el ícono, reemplazar con el ícono específico más tarde */
-  width: 16px;
-  height: 16px;
-  background: #fff; /* Color de ejemplo para visualizar el espacio del ícono */
-  display: inline-block;
-  border-radius: 50%; /* Ícono redondeado */
-}
-
+/* Estilos para el contenedor de juegos */
 .game-container {
-  margin-left: 210px;
-  margin-top: 60px;
+  margin-left: 220px; /* Ajustar según el ancho de la sidebar izquierda */
+  margin-right: 220px; /* Ajustar según el ancho de la sidebar de noticias */
+  margin-top: 20px;
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 10px;
+  gap: 20px;
   background: #202020;
   min-height: 100vh;
 }
@@ -100,10 +126,10 @@ html, body {
   background: #666;
   padding: 5px;
   border-radius: 5px;
-  color: #fff; /* Texto blanco */
-  position: absolute; /* Posicionamiento absoluto */
-  top: 10px; /* Espacio desde el top dentro de la tarjeta */
-  left: 10px; /* Espacio desde la izquierda dentro de la tarjeta */
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .boton {

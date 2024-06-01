@@ -1,3 +1,12 @@
+<div class="news-sidebar">
+  <div class="news-content">
+    <h3>Últimas Noticias</h3>
+    <div *ngFor="let noticia of noticias">
+      <p>{{ noticia }}</p>
+    </div>
+  </div>
+</div>
+
 <div class="sidebar">
   <div class="genre-buttons">
     <button (click)="loadGamesByGenre('4')"><img src="../assets/logo-accion.png" alt="Icon">Acción</button>
